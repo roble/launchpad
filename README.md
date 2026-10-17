@@ -1,58 +1,66 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+<p align="center"><img src="public/images/logo-on-light.svg" width="320" alt="Launchpad"></p>
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+<p align="center"><strong>Your SaaS idea, live before lunch.</strong></p>
 
-## About Laravel
+<p align="center"><a href="https://launchpad-stripe.laravel.cloud">Live demo</a></p>
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+---
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Launchpad turns a one-line idea into a deployed SaaS. Pick your modules and a theme, click **Launch**, and it scaffolds a [Saucebase](https://github.com/saucebase-dev/saucebase) app, provisions payments, a database, and email through **Stripe Projects**, deploys to **Laravel Cloud**, and makes you the admin.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Built for the Stripe Projects hackathon.
 
-## Learning Laravel
+## How it works
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+1. **Idea:** name, tagline, and what you're building.
+2. **Modules:** auth, billing, and themes are always included. Add a blog, roadmap, announcements, or a coming-soon page.
+3. **Theme:** pick one of 14 presets (Kiwi, Blueberry, Coffee, …).
+4. **Launch:** choose the services to provision, then go.
 
-In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+A queued job then runs three CLIs in order and streams each step to a live progress page:
 
-You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
+| Step | Command |
+|---|---|
+| Create the app | `saucebase new <slug> --modules=…` |
+| Apply the theme | `php artisan saucebase:theme:apply <theme>` |
+| Create the Stripe project | `stripe projects init` |
+| Provision services | `stripe projects add stripe/sandbox`, `Neon/free` + `neon/postgres`, `resend/email` |
+| Create the admin | `php artisan auth:make-admin <your email>` |
+| Deploy | `cloud ship` |
 
-## Agentic Development
+When it finishes you get the live URL, the login and admin links, and how to sign in.
 
-Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
+## Demo mode
+
+Launches are **simulated by default**: each step pauses and reports success, and nothing real is created. The live demo runs this way.
+
+To run real launches, set `LAUNCHPAD_FAKE=false` on a machine where the `saucebase`, `stripe`, `gh`, and `cloud` CLIs are installed and signed in. Each launch then creates real resources on those accounts.
+
+## Run it locally
+
+Requires PHP 8.4, Composer, and Node.
 
 ```bash
-composer require laravel/boost --dev
-
-php artisan boost:install
+composer install
+npm install
+cp .env.example .env
+php artisan key:generate
+php artisan migrate --seed
+npm run build
+php artisan queue:work   # processes launches
 ```
 
-Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
+The code lives in `modules/launchpad`:
 
-## Contributing
+- `src/Jobs/RunLaunch.php`: the launch steps
+- `src/Http/Controllers/LaunchpadController.php`: wizard, launch, and progress
+- `resources/js/pages/`: the wizard (`Index.vue`) and progress page (`Show.vue`)
+- `config/config.php`: offered modules, services, and demo-mode settings
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+```bash
+php artisan test --compact modules/launchpad/tests
+```
 
-## Code of Conduct
+## Built with
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+[Saucebase](https://github.com/saucebase-dev/saucebase) · Laravel 13 · Inertia + Vue · [Stripe Projects](https://projects.dev) · Laravel Cloud · Neon · Resend
