@@ -1,0 +1,111 @@
+{
+  "version": 4,
+  "project": {
+    "catalog": "prod",
+    "initializedAt": "2026-10-17T11:21:11.679Z",
+    "merchantDisplayName": null,
+    "merchantId": "acct_1RuyUEAfcD5GMRdn",
+    "projectId": "project_61Vatd9xsRm9uv79x16T4MRa119Pzr953R2m2m2gS2lE",
+    "projectName": "launchpad"
+  },
+  "providers": {
+    "laravel_cloud": {
+      "accountRequestId": "fprvcnn_61VaqwbMLRvyZZnkP16T4MRa119Pzr953R2m2m2gS6kK",
+      "configuration": {},
+      "linkedAt": "2026-10-17T08:29:05.716Z",
+      "providerId": "prvdr_61Ulotgugv9hEYa1b5HwO",
+      "providerName": "Laravel_Cloud",
+      "redirectUrl": null,
+      "requestedAt": "2026-10-17T08:29:05.716Z",
+      "status": "complete"
+    },
+    "neon": {
+      "accountRequestId": "fprvcnn_61VatNDPyodpgG8ft16T4MRa119Pzr953R2m2m2gS6MS",
+      "configuration": {},
+      "linkedAt": "2026-10-17T11:04:43.087Z",
+      "providerId": "prvdr_61UH8uNXFdoJUJOtT54AC",
+      "providerName": "Neon",
+      "redirectUrl": null,
+      "requestedAt": "2026-10-17T11:04:43.087Z",
+      "status": "complete"
+    },
+    "resend": {
+      "accountRequestId": "fprvcnn_61VaqpjqSxuzae4Sm16T4MRa119Pzr953R2m2m2gSPZg",
+      "configuration": {},
+      "linkedAt": "2026-10-17T08:21:59.435Z",
+      "providerId": "prvdr_61VFXTzsszWb1r1S25KMa",
+      "providerName": "Resend",
+      "redirectUrl": null,
+      "requestedAt": "2026-10-17T08:21:59.435Z",
+      "status": "complete",
+      "providerAccount": {
+        "id": "a433ea7f-bbce-4d9a-ac03-6dbabe5038d7",
+        "display_name": "renanroble",
+        "primary_email": "renanroble@gmail.com",
+        "link_action": "created"
+      }
+    }
+  },
+  "resources": {
+    "neon-plan": {
+      "configuration": {},
+      "createdAt": "2026-10-17T11:23:47.959Z",
+      "lastRevealedAt": "2026-10-17T11:23:48.314Z",
+      "lastStatus": "complete",
+      "livemode": true,
+      "name": "neon-plan",
+      "providerId": "prvdr_61UH8uNXFdoJUJOtT54AC",
+      "providerName": "Neon",
+      "resourceId": "fres_61Vatfepwhsi21jjn16T4MRa119Pzr953R2m2m2gSCHw",
+      "serviceId": "free"
+    },
+    "neon-postgres": {
+      "configuration": {},
+      "createdAt": "2026-10-17T11:23:51.655Z",
+      "lastRevealedAt": "2026-10-17T11:23:52.003Z",
+      "lastStatus": "complete",
+      "livemode": true,
+      "name": "neon-postgres",
+      "providerId": "prvdr_61UH8uNXFdoJUJOtT54AC",
+      "providerName": "Neon",
+      "resourceId": "fres_61VatfiMG3ZDnXtHb16T4MRa119Pzr953R2m2m2gSIgq",
+      "serviceId": "postgres"
+    },
+    "resend-email": {
+      "configuration": {},
+      "createdAt": "2026-10-17T11:23:43.662Z",
+      "lastRevealedAt": "2026-10-17T11:23:44.012Z",
+      "lastStatus": "complete",
+      "livemode": true,
+      "name": "resend-email",
+      "providerId": "prvdr_61VFXTzsszWb1r1S25KMa",
+      "providerName": "Resend",
+      "resourceId": "fres_61VatfZnyUMZw8iLj16T4MRa119Pzr953R2m2m2gSQoK",
+      "serviceId": "email"
+    },
+    "resend-plan": {
+      "configuration": {},
+      "createdAt": "2026-10-17T08:22:01.256Z",
+      "lastRevealedAt": null,
+      "lastStatus": "complete",
+      "livemode": true,
+      "name": "resend-plan",
+      "providerId": "prvdr_61VFXTzsszWb1r1S25KMa",
+      "providerName": "Resend",
+      "resourceId": "fres_61VaqpkjFXVvchCw916T4MRa119Pzr953R2m2m2gSQFE",
+      "serviceId": "free"
+    },
+    "stripe-sandbox": {
+      "configuration": {},
+      "createdAt": "2026-10-17T11:23:38.384Z",
+      "lastRevealedAt": "2026-10-17T11:23:38.683Z",
+      "lastStatus": "complete",
+      "livemode": true,
+      "name": "stripe-sandbox",
+      "providerId": "prvdr_stripe_native",
+      "providerName": "stripe",
+      "resourceId": "fres_61VatfVNNj0m7x92H16T4MRa119Pzr953R2m2m2gSHf6",
+      "serviceId": "sandbox"
+    }
+  }
+}

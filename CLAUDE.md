@@ -277,3 +277,7 @@ Activate `saucebase-module-development` before creating or changing a module, an
 Activate the `saucebase-themes-development` skill before changing this module.
 
 </laravel-boost-guidelines>
+
+<!-- stripe-projects-cli managed:claude-md:start -->
+look at AGENTS.md for your rules
+<!-- stripe-projects-cli managed:claude-md:end -->
