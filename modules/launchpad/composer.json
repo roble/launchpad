@@ -1,0 +1,33 @@
+{
+    "name": "modules/launchpad",
+    "description": "",
+    "type": "laravel-module",
+    "license": "proprietary",
+    "version": "1.0.0",
+    "authors": [
+        {
+            "name": "Saucebase",
+            "email": "hello@saucebase.dev"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Modules\\Launchpad\\Providers\\LaunchpadServiceProvider"
+            ]
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Modules\\Launchpad\\": "src/",
+            "Modules\\Launchpad\\Database\\Factories\\": "database/factories/",
+            "Modules\\Launchpad\\Database\\Seeders\\": "database/seeders/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Modules\\Launchpad\\Tests\\": "tests/"
+        }
+    },
+    "minimum-stability": "stable"
+}

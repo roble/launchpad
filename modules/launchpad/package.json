@@ -1,0 +1,5 @@
+{
+    "name": "@modules/launchpad",
+    "private": true,
+    "type": "module"
+}

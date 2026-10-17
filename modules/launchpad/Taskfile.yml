@@ -1,0 +1,25 @@
+# https://taskfile.dev
+version: '3'
+
+tasks:
+    # ── Testing ───────────────────────────────────────────────────
+    test:php:
+        desc: Run PHPUnit tests for Launchpad module
+        cmd: php artisan test --testsuite=Modules --filter='^Modules\\Launchpad\\Tests'
+
+    test:e2e:
+        desc: Run E2E tests for Launchpad module
+        cmd: npx playwright test --project="@Launchpad*" {{.CLI_ARGS}}
+        interactive: true
+
+    # ── Database ──────────────────────────────────────────────────
+
+    db:seed:demo:
+        desc: Seed the Launchpad module with sample content
+        cmd: '{{.APP}} php artisan modules:seed --module=launchpad --demo'
+
+    # ── Code Generation ────────────────────────────────────────────
+
+    types:generate:
+        desc: Generate TypeScript types from PHP DTOs and enums
+        cmd: '{{.APP}} php artisan module:generate-types launchpad'

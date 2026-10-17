@@ -1,6 +1,5 @@
 *.log
 .DS_Store
-.env
 .env.backup
 .env.production
 .phpactor.json
@@ -25,3 +24,19 @@ _ide_helper.php
 Homestead.json
 Homestead.yaml
 Thumbs.db
+
+# Saucebase
+/bootstrap/ssr
+/playwright-report
+/test-results
+/public/css/filament
+/public/js/filament
+/public/fonts/filament
+
+.projects/cache
+.projects/vault
+.projects/state.test.json
+.projects/state.local.test.json
+.env
+.env.*
+!.env.example
